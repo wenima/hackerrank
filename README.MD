@@ -6,6 +6,7 @@ the repository includes all of my completed code challenges from [Hacker Rank](h
 
 ## Easy
 * Duplication
+* Fight the Monsters
 
 ## Medium
 
