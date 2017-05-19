@@ -5,6 +5,7 @@ import pytest
 
 TEST = [
     ('ccaccbbbaccccca', '15', 2),
+    ('', 0, 0),
 ]
 
 @pytest.mark.parametrize("s, l, result", TEST)
