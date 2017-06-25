@@ -35,5 +35,34 @@ WITH cte AS (
   CASE WHEN Occupation='Singer' THEN Name END AS singer,
   CASE WHEN Occupation='Actor' THEN Name END AS actor from Occupations
 )
-
 SELECT min(doctor), min(prof), min(singer), min(actor) FROM cte GROUP BY rn
+
+
+-- https://www.hackerrank.com/challenges/binary-search-tree-1
+-- Difficulty: Medium
+
+
+WITH cte (n, cnt) AS (
+    SELECT b1.n, count(b1.p)
+    FROM bst b1
+    LEFT JOIN bst b2
+    ON b1.n = b2.p
+    GROUP BY b1.n, b1.p
+)
+
+SELECT n,
+CASE
+        WHEN cnt = 1 THEN 'Leaf'
+        WHEN cnt = 2 THEN 'Inner'
+        WHEN cnt = 0 THEN 'Root'
+        ELSE NULL END
+FROM cte ORDER BY n;
+
+-- more concise way
+SELECT CASE
+	WHEN P IS NULL THEN CONCAT(N, ' Root')
+	WHEN N IN (SELECT DISTINCT P FROM BST) THEN CONCAT(N, ' Inner')
+	ELSE CONCAT(N, ' Leaf')
+	END
+FROM BST
+ORDER BY N ASC
