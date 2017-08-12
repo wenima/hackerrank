@@ -66,3 +66,9 @@ SELECT CASE
 	END
 FROM BST
 ORDER BY N ASC
+
+-- Flavor: MS SQL
+
+-- https://www.hackerrank.com/challenges/the-company
+-- Difficulty: Medium
+-- Comments: 
