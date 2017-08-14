@@ -71,7 +71,7 @@ ORDER BY N ASC
 -- https://www.hackerrank.com/challenges/the-company
 -- Difficulty: Medium
 -- Comments:
-select c.company_code, c.founder, vlm.lm_cnt, vsm.sm_cnt, ve.e_cnt
+select c.company_code, c.founder, vlm.lm_cnt, vsm.sm_cnt, vm.m_cnt, ve.e_cnt
 from company as c
 join (
       select company_code, count(*) as lm_cnt
@@ -98,8 +98,5 @@ join (
     ) as ve
       on (ve.company_code = c.company_code)
 order by
-    case IsNumeric(c.company_code)
-    when 1 then Replicate('0', 100 - Len(c.company_code)) + c.company_code
-    else c.company_code
-    end
-asc
+    convert(int, substring(c.company_code, 2, len(c.company_code) - 1))
+    asc
