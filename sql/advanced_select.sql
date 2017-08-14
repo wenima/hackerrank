@@ -71,5 +71,17 @@ ORDER BY N ASC
 -- https://www.hackerrank.com/challenges/the-company
 -- Difficulty: Medium
 -- Comments:
-
- 
+select c.company_code, c.founder, vlm.lm_cnt, vsm.sm_cnt
+from company as c
+join (
+      select company_code, count(*) as lm_cnt,
+      from lead_manager
+      group by company_code
+    ) as vlm
+      on (vlm.company_code = c.company_code)
+join (
+        select company_code, count(*) as sm_cnt,
+        from senior_manager
+        group by company_code
+    ) as vsm
+      on (vsm.company_code = c.company_code)
