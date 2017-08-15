@@ -70,7 +70,8 @@ ORDER BY N ASC
 
 -- https://www.hackerrank.com/challenges/the-company
 -- Difficulty: Medium
--- Comments:
+-- Comments: Code challenge says it should order ascending but it actually
+-- only passes when not ordering correctly, so C1, C10, C2... etc
 select c.company_code,
     c.founder,
     count(distinct e.lead_manager_code),
