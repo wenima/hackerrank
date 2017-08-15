@@ -71,32 +71,13 @@ ORDER BY N ASC
 -- https://www.hackerrank.com/challenges/the-company
 -- Difficulty: Medium
 -- Comments:
-select c.company_code, c.founder, vlm.lm_cnt, vsm.sm_cnt, vm.m_cnt, ve.e_cnt
-from company as c
-join (
-      select company_code, count(distinct lead_manager_code) as lm_cnt
-      from lead_manager
-      group by company_code
-    ) as vlm
-      on (vlm.company_code = c.company_code)
-join (
-        select company_code, count(distinct senior_manager_code) as sm_cnt
-        from senior_manager
-        group by company_code
-    ) as vsm
-      on (vsm.company_code = c.company_code)
-join (
-        select company_code, count(distinct manager_code) as m_cnt
-        from manager
-        group by company_code
-    ) as vm
-      on (vm.company_code = c.company_code)
-join (
-        select company_code, count(distinct employee_code) as e_cnt
-        from employee
-        group by company_code
-    ) as ve
-      on (ve.company_code = c.company_code)
-order by
-    convert(int, substring(c.company_code, 2, len(c.company_code) - 1))
-    asc
+select c.company_code,
+    c.founder,
+    count(distinct e.lead_manager_code),
+    count(distinct e.senior_manager_code),
+    count(distinct e.manager_code),
+    count(distinct e.employee_code)
+from company c
+    inner join employee e on e.company_code = c.company_code
+group by c.company_code,c.founder
+order by c.company_code;
