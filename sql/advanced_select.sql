@@ -74,25 +74,25 @@ ORDER BY N ASC
 select c.company_code, c.founder, vlm.lm_cnt, vsm.sm_cnt, vm.m_cnt, ve.e_cnt
 from company as c
 join (
-      select company_code, count(*) as lm_cnt
+      select company_code, count(distinct lead_manager_code) as lm_cnt
       from lead_manager
       group by company_code
     ) as vlm
       on (vlm.company_code = c.company_code)
 join (
-        select company_code, count(*) as sm_cnt
+        select company_code, count(distinct senior_manager_code) as sm_cnt
         from senior_manager
         group by company_code
     ) as vsm
       on (vsm.company_code = c.company_code)
 join (
-        select company_code, count(*) as m_cnt
+        select company_code, count(distinct manager_code) as m_cnt
         from manager
         group by company_code
     ) as vm
       on (vm.company_code = c.company_code)
 join (
-        select company_code, count(*) as e_cnt
+        select company_code, count(distinct employee_code) as e_cnt
         from employee
         group by company_code
     ) as ve
