@@ -65,3 +65,6 @@ SELECT DISTINCT city
 FROM station
 WHERE lower(left(city, 1)) NOT LIKE '[aeiou]'
 AND lower(right(city, 1)) NOT LIKE '[aeiou]';
+
+-- solution for https://www.hackerrank.com/challenges/weather-observation-station-18
+-- Query the Manhattan Distance between points P1 and P2 and round it to a scale of  decimal places.
