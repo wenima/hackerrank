@@ -68,3 +68,5 @@ AND lower(right(city, 1)) NOT LIKE '[aeiou]';
 
 -- solution for https://www.hackerrank.com/challenges/weather-observation-station-18
 -- Query the Manhattan Distance between points P1 and P2 and round it to a scale of  decimal places.
+SELECT FORMAT(ABS(MIN(LAT_N)-MAX(LAT_N))+ABS(MIN(LONG_W)-MAX(LONG_W)),'F4')
+FROM STATION;
