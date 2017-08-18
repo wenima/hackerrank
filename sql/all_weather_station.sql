@@ -70,3 +70,7 @@ AND lower(right(city, 1)) NOT LIKE '[aeiou]';
 -- Query the Manhattan Distance between points P1 and P2 and round it to a scale of  decimal places.
 SELECT FORMAT(ABS(MIN(LAT_N)-MAX(LAT_N))+ABS(MIN(LONG_W)-MAX(LONG_W)),'F4')
 FROM STATION;
+
+-- solution for https://www.hackerrank.com/challenges/weather-observation-station-19
+-- Query the Euclidean Distance between points P1 and P2 and format your answer to display  decimal digits.
+select cast(sqrt((power(max(lat_n)-min(lat_n),2))+(power(max(long_w)-min(long_w),2))) as decimal(16,4)) from station;
