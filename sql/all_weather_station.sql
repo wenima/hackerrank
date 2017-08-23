@@ -74,3 +74,6 @@ FROM STATION;
 -- solution for https://www.hackerrank.com/challenges/weather-observation-station-19
 -- Query the Euclidean Distance between points P1 and P2 and format your answer to display  decimal digits.
 select cast(sqrt((power(max(lat_n)-min(lat_n),2))+(power(max(long_w)-min(long_w),2))) as decimal(16,4)) from station;
+
+-- solution for https://www.hackerrank.com/challenges/weather-observation-station-19
+-- Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to  4 decimal places.
