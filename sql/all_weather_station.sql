@@ -77,3 +77,9 @@ select cast(sqrt((power(max(lat_n)-min(lat_n),2))+(power(max(long_w)-min(long_w)
 
 -- solution for https://www.hackerrank.com/challenges/weather-observation-station-19
 -- Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to  4 decimal places.
+select top 1 lat_n
+from (
+    select TOP 50 PERCENT cast( lat_n as decimal(18,4)) as lat_n
+    from station order by lat_n
+    ) a
+    order by lat_n desc
